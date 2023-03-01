@@ -1,11 +1,15 @@
 package com.springauthentication.Implementing.Spring.Security.Controller;
 
+import com.springauthentication.Implementing.Spring.Security.Model.User;
+import com.springauthentication.Implementing.Spring.Security.Repository.UserRepository;
 import jakarta.persistence.PostRemove;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -26,7 +30,6 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ){
-//piece of code
        return ResponseEntity.ok(authenticationService.register(request));
     }
     @PostMapping("/authenticate")
@@ -37,8 +40,5 @@ public class AuthenticationController {
     {
         return ResponseEntity.ok(authenticationService.authenticate(request));
 
-
     }
-
-
 }
